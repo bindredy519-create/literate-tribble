@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><style>
+body {
+    display: none;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Для тебя ❤️</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #080008;
+    color: white;
+}
+
+
+/* =========================================================
+   СТРАНИЦЫ
+========================================================= */
+
+.page {
+    position: fixed;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    transform: scale(1.05);
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+/* =========================================================
+   ПЕРВАЯ СТРАНИЦА
+========================================================= */
+
+#page1 {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 20, 90, 0.22),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at center,
+            rgba(130, 0, 60, 0.35),
+            transparent 65%
+        ),
+
+        linear-gradient(
+            135deg,
+            #090009,
+            #260012,
+            #080008
+        );
+}
+
+
+#canvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================================
+   ТЕКСТ ПЕРВОЙ СТРАНИЦЫ
+========================================================= */
+
+.intro {
+
+    position: absolute;
+
+    z-index: 10;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+
+.intro-small {
+
+    font-size: 16px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #ffb4ca;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 15px #ff376d;
+}
+
+
+.intro-title {
+
+    font-size:
+        clamp(35px, 7vw, 75px);
+
+    color: white;
+
+    text-shadow:
+        0 0 15px #ff174f,
+        0 0 40px #ff174f,
+        0 0 80px rgba(255, 0, 80, 0.5);
+
+    margin-top: 250px;
+
+}
+
+
+.intro-subtitle {
+
+    margin-top: 12px;
+
+    font-size:
+        clamp(16px, 2vw, 21px);
+
+    color: #ffdbe5;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   КНОПКА
+========================================================= */
+
+.open-button {
+
+    pointer-events: auto;
+
+    margin-top: 30px;
+
+    padding:
+        15px 38px;
+
+    border-radius: 50px;
+
+    border:
+        1px solid rgba(
+            255,
+            180,
+            200,
+            0.7
+        );
+
+    background:
+        rgba(
+            255,
+            20,
+            90,
+            0.18
+        );
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 20, 90, 0.25);
+
+    transition:
+        transform .3s,
+        background .3s,
+        box-shadow .3s;
+}
+
+
+.open-button:hover {
+
+    transform:
+        scale(1.08);
+
+    background:
+        rgba(
+            255,
+            30,
+            100,
+            0.4
+        );
+
+    box-shadow:
+        0 0 45px
+        rgba(255, 30, 110, 0.7);
+}
+
+
+.open-button.hide {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        scale(0.7);
+}
+
+
+/* =========================================================
+   ВТОРАЯ СТРАНИЦА
+========================================================= */
+
+#page2 {
+
+    overflow-y: auto;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            rgba(120, 10, 60, .6),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #100006,
+            #310019,
+            #080008
+        );
+}
+
+
+.letter-container {
+
+    min-height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px 20px;
+}
+
+
+.letter {
+
+    width:
+        min(900px, 100%);
+
+    padding:
+        clamp(
+            30px,
+            6vw,
+            70px
+        );
+
+    border-radius: 28px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            180,
+            200,
+            .35
+        );
+
+    background:
+        rgba(
+            30,
+            0,
+            18,
+            .78
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+
+        0 0 70px
+        rgba(
+            255,
+            20,
+            100,
+            .15
+        ),
+
+        inset 0 0 60px
+        rgba(
+            255,
+            50,
+            120,
+            .04
+        );
+}
+
+
+.letter-title {
+
+    text-align: center;
+
+    font-size:
+        clamp(
+            35px,
+            6vw,
+            65px
+        );
+
+    color: #ffb4ca;
+
+    margin-bottom: 40px;
+
+    text-shadow:
+        0 0 25px
+        rgba(
+            255,
+            50,
+            120,
+            .6
+        );
+}
+
+
+.letter-text {
+
+    font-size:
+        clamp(
+            18px,
+            2.2vw,
+            23px
+        );
+
+    line-height: 1.9;
+
+    color: #ffeaf1;
+
+    white-space: pre-line;
+}
+
+
+.signature {
+
+    margin-top: 45px;
+
+    text-align: right;
+
+    color: #ffabc5;
+
+    font-size: 24px;
+
+    font-style: italic;
+}
+
+
+.back-button {
+
+    display: block;
+
+    margin:
+        40px auto 0;
+
+    padding:
+        13px 30px;
+
+    border-radius: 50px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            180,
+            200,
+            .5
+        );
+
+    background:
+        rgba(
+            255,
+            30,
+            100,
+            .15
+        );
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.back-button:hover {
+
+    background:
+        rgba(
+            255,
+            30,
+            100,
+            .35
+        );
+
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================================
+   МОБИЛЬНЫЙ
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .intro-title {
+
+        margin-top: 190px;
+
+    }
+
+    .intro-small {
+
+        font-size: 12px;
+
+        letter-spacing: 3px;
+    }
+
+    .intro-subtitle {
+
+        font-size: 15px;
+
+        padding: 0 20px;
+    }
+
+    .letter {
+
+        padding:
+            30px 20px;
+    }
+
+    .letter-text {
+
+        line-height: 1.75;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     ПЕРВАЯ СТРАНИЦА
+========================================================= -->
+
+<section
+    id="page1"
+    class="page active"
+>
+
+    <canvas id="canvas"></canvas>
+
+
+    <div class="intro">
+
+        <div class="intro-small">
+            Для самой любимой
+        </div>
+
+
+        <h1 class="intro-title">
+            с днем рождения мелюшенька
+        </h1>
+
+
+        <div class="intro-subtitle">
+
+            я люблю тебя больше всех на свете
+
+        </div>
+
+
+        <button
+            id="openButton"
+            class="open-button"
+            onclick="destroyHeart()"
+        >
+
+            Открыть ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ВТОРАЯ СТРАНИЦА
+========================================================= -->
+
+<section
+    id="page2"
+    class="page"
+>
+
+    <div class="letter-container">
+
+        <div class="letter">
+
+
+            <h2 class="letter-title">
+
+                моей любимой девочке ❤️
+
+            </h2>
+
+
+            <div class="letter-text">
+моя любимая девочка, поздравляю тебя с днем рождения, желаю тебе счастья, здоровья, чтоб все все у тебя получалось, чтоб ты была счастлива, прости меня пожалуйста, что опять переношу встречу, что обещал в этот день рождения быть с тобой рядом, я еще не знаю, может получится, но мне будет не очень комфортно, потому что все еще стесняюсь тебя, ты у меня уже взросленькая девочка, я тебя люблю очень очень очень очень сильно, мелюш, надеюсь у нас с тобой все будет хорошо, я стараюсь, чтоб у нас с тобой все было, чтоб ты могла тратить на то что хочешь и не смотреть на цену, мне за это вообще ничего не нужно, кроме твоего присутствия и любви, хочу будущее с тобой, не зря же мы попались друг другу, за эти два года ты мне стала родная, как будто с самого рождения с тобой знаком, я полюбил тебя безумно сильно за это время, я не хочу чтоб мы разошлись с тобой, ты мне очень сильно нужна, я чувствую себя счастливым с тобой, даже когда мы еще не встретились ни разу, но скоро встретимся, и я буду еще счастливее, моя девочка любимая, прости, что я обижаю тебя, что мне нужно говорить кучу раз одно и то же, чтоб я понял, но даже если я и обижаю тебя, то делаю это любя, ты самая лучшая девочка в мире, и я ценю тебя, то что мы ссоримся довольно частенько, в этом ничего страшного нету, да, мне бывает очень обидно, но из-за этого я тебя не брошу, и по всяким таким вещам тоже, если ты верна мне, то и я буду верен тебе и никогда не уйду, но если сделаешь что-то серьезное, либо я буду чувствовать, что соревнуюсь за тебя, то только по этому уйду, больше не из-за чего, надеюсь ты щас счастлива со мной и будешь счастлива в будущем, я только этого и хочу, чтоб ты была со мной счастлива, я люблю тебя безумно сильно, мелюш, и я хочу быть с тобой, еще раз поздравляю тебя с днем рождения, это самый лучший день для всех, потому что ты сегодня родилась
+            </div>
+
+
+            <div class="signature">
+
+                самой красивой девочке
+
+            </div>
+
+
+            <button
+                class="back-button"
+                onclick="goBack()"
+            >
+
+                ← Вернуться
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     THREE.JS
+========================================================= -->
+
+<script src="
+https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js
+"></script>
+
+
+<script>
+
+
+/* =========================================================
+   THREE.JS
+========================================================= */
+
+const canvas =
+    document.getElementById("canvas");
+
+
+const scene =
+    new THREE.Scene();
+
+
+const camera =
+    new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth /
+        window.innerHeight,
+        0.1,
+        1000
+    );
+
+
+camera.position.z = 30;
+
+
+const renderer =
+    new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true,
+        antialias: true
+    });
+
+
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+
+renderer.setPixelRatio(
+    Math.min(
+        window.devicePixelRatio,
+        2
+    )
+);
+
+
+
+/* =========================================================
+   ЧАСТИЦЫ СЕРДЦА
+========================================================= */
+
+
+const particleCount = 5000;
+
+
+const positions =
+    new Float32Array(
+        particleCount * 3
+    );
+
+
+const originalPositions =
+    new Float32Array(
+        particleCount * 3
+    );
+
+
+const velocities =
+    new Float32Array(
+        particleCount * 3
+    );
+
+
+const sizes =
+    new Float32Array(
+        particleCount
+    );
+
+
+
+/*
+    Формула настоящего сердца:
+
+    x = 16 sin³(t)
+
+    y =
+    13cos(t)
+    - 5cos(2t)
+    - 2cos(3t)
+    - cos(4t)
+*/
+
+
+for (
+    let i = 0;
+    i < particleCount;
+    i++
+) {
+
+
+    const t =
+        Math.random() *
+        Math.PI *
+        2;
+
+
+    const scale =
+        0.55 +
+        Math.random() *
+        0.35;
+
+
+    let x =
+        16 *
+        Math.pow(
+            Math.sin(t),
+            3
+        );
+
+
+    let y =
+        13 *
+        Math.cos(t)
+        -
+        5 *
+        Math.cos(2 * t)
+        -
+        2 *
+        Math.cos(3 * t)
+        -
+        Math.cos(4 * t);
+
+
+    /*
+       Добавляем толщину,
+       чтобы сердце было
+       не только контуром.
+    */
+
+    x +=
+        (Math.random() - 0.5) *
+        2.5;
+
+    y +=
+        (Math.random() - 0.5) *
+        2.5;
+
+
+    x *= scale;
+    y *= scale;
+
+
+    const z =
+        (Math.random() - 0.5) *
+        5;
+
+
+    const index =
+        i * 3;
+
+
+    positions[index] =
+        x;
+
+    positions[index + 1] =
+        y;
+
+    positions[index + 2] =
+        z;
+
+
+    originalPositions[index] =
+        x;
+
+    originalPositions[index + 1] =
+        y;
+
+    originalPositions[index + 2] =
+        z;
+
+
+    velocities[index] = 0;
+    velocities[index + 1] = 0;
+    velocities[index + 2] = 0;
+
+
+    sizes[i] =
+        0.5 +
+        Math.random() * 1.5;
+}
+
+
+
+/* =========================================================
+   GEOMETRY
+========================================================= */
+
+const particleGeometry =
+    new THREE.BufferGeometry();
+
+
+particleGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(
+        positions,
+        3
+    )
+);
+
+
+particleGeometry.setAttribute(
+    "size",
+    new THREE.BufferAttribute(
+        sizes,
+        1
+    )
+);
+
+
+
+/* =========================================================
+   МАТЕРИАЛ ЧАСТИЦ
+========================================================= */
+
+const particleMaterial =
+    new THREE.PointsMaterial({
+
+        color: 0xff3972,
+
+        size: 0.12,
+
+        transparent: true,
+
+        opacity: 0.95,
+
+        blending:
+            THREE.AdditiveBlending,
+
+        depthWrite: false
+
+    });
+
+
+
+const heartParticles =
+    new THREE.Points(
+        particleGeometry,
+        particleMaterial
+    );
+
+
+scene.add(
+    heartParticles
+);
+
+
+
+/* =========================================================
+   ДОБАВЛЯЕМ МАЛЕНЬКИЕ СВЕТЯЩИЕСЯ ЧАСТИЦЫ
+========================================================= */
+
+const sparkleCount = 1000;
+
+
+const sparklePositions =
+    new Float32Array(
+        sparkleCount * 3
+    );
+
+
+for (
+    let i = 0;
+    i < sparkleCount;
+    i++
+) {
+
+    const index = i * 3;
+
+    sparklePositions[index] =
+        (Math.random() - 0.5) * 35;
+
+    sparklePositions[index + 1] =
+        (Math.random() - 0.5) * 35;
+
+    sparklePositions[index + 2] =
+        (Math.random() - 0.5) * 15;
+}
+
+
+const sparkleGeometry =
+    new THREE.BufferGeometry();
+
+
+sparkleGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(
+        sparklePositions,
+        3
+    )
+);
+
+
+const sparkleMaterial =
+    new THREE.PointsMaterial({
+
+        color: 0xff9fba,
+
+        size: 0.045,
+
+        transparent: true,
+
+        opacity: 0.5,
+
+        blending:
+            THREE.AdditiveBlending,
+
+        depthWrite: false
+
+    });
+
+
+const sparkles =
+    new THREE.Points(
+        sparkleGeometry,
+        sparkleMaterial
+    );
+
+
+scene.add(sparkles);
+
+
+
+/* =========================================================
+   СОСТОЯНИЕ
+========================================================= */
+
+let destroyed = false;
+
+let destructionProgress = 0;
+
+
+
+/* =========================================================
+   РАЗРУШЕНИЕ СЕРДЦА
+========================================================= */
+
+function destroyHeart() {
+
+    if (destroyed)
+        return;
+
+
+    destroyed = true;
+
+
+    const button =
+        document.getElementById(
+            "openButton"
+        );
+
+
+    button.classList.add(
+        "hide"
+    );
+
+
+    /*
+       Для каждой частицы
+       задаём направление,
+       куда она полетит.
+    */
+
+    for (
+        let i = 0;
+        i < particleCount;
+        i++
+    ) {
+
+        const index = i * 3;
+
+
+        const x =
+            originalPositions[index];
+
+        const y =
+            originalPositions[index + 1];
+
+        const z =
+            originalPositions[index + 2];
+
+
+        const length =
+            Math.sqrt(
+                x * x +
+                y * y +
+                z * z
+            );
+
+
+        /*
+           Частицы летят наружу
+           от центра сердца.
+        */
+
+        velocities[index] =
+            (x / length) *
+            (0.025 +
+            Math.random() * 0.045);
+
+
+        velocities[index + 1] =
+            (y / length) *
+            (0.025 +
+            Math.random() * 0.045);
+
+
+        velocities[index + 2] =
+            (z / length) *
+            (0.025 +
+            Math.random() * 0.045);
+
+
+        /*
+           Дополнительный случайный
+           разлёт.
+        */
+
+        velocities[index] +=
+            (Math.random() - 0.5)
+            * 0.025;
+
+
+        velocities[index + 1] +=
+            (Math.random() - 0.5)
+            * 0.025;
+
+
+        velocities[index + 2] +=
+            (Math.random() - 0.5)
+            * 0.025;
+
+    }
+
+
+    /*
+       Запускаем переход
+    */
+
+    setTimeout(
+        () => {
+
+            document
+                .getElementById(
+                    "page1"
+                )
+                .classList.remove(
+                    "active"
+                );
+
+
+            document
+                .getElementById(
+                    "page2"
+                )
+                .classList.add(
+                    "active"
+                );
+
+        },
+        2400
+    );
+
+}
+
+
+
+/* =========================================================
+   АНИМАЦИЯ
+========================================================= */
+
+const clock =
+    new THREE.Clock();
+
+
+function animate() {
+
+    requestAnimationFrame(
+        animate
+    );
+
+
+    const time =
+        clock.getElapsedTime();
+
+
+    /*
+       Сердце слегка "дышит".
+    */
+
+    if (!destroyed) {
+
+        heartParticles.scale.x =
+            1 +
+            Math.sin(time * 2) *
+            0.025;
+
+        heartParticles.scale.y =
+            1 +
+            Math.sin(time * 2) *
+            0.025;
+
+    }
+
+
+    /*
+       Разрушение
+    */
+
+    if (destroyed) {
+
+        destructionProgress +=
+            0.008;
+
+
+        const positionAttribute =
+            particleGeometry
+                .attributes
+                .position;
+
+
+        for (
+            let i = 0;
+            i < particleCount;
+            i++
+        ) {
+
+            const index = i * 3;
+
+
+            positions[index] +=
+                velocities[index];
+
+            positions[index + 1] +=
+                velocities[index + 1];
+
+            positions[index + 2] +=
+                velocities[index + 2];
+
+
+            /*
+               Постепенно ускоряем
+               разлёт.
+            */
+
+            velocities[index] *=
+                1.003;
+
+            velocities[index + 1] *=
+                1.003;
+
+            velocities[index + 2] *=
+                1.003;
+
+
+            /*
+               Добавляем немного
+               случайного движения.
+            */
+
+            positions[index] +=
+                Math.sin(
+                    time * 5 + i
+                ) * 0.001;
+
+
+            positions[index + 1] +=
+                Math.cos(
+                    time * 4 + i
+                ) * 0.001;
+
+        }
+
+
+        positionAttribute
+            .needsUpdate = true;
+
+
+        /*
+           Сердце постепенно исчезает.
+        */
+
+        particleMaterial.opacity =
+            Math.max(
+                0,
+                0.95 -
+                destructionProgress
+            );
+
+
+        /*
+           Искры становятся ярче.
+        */
+
+        sparkleMaterial.opacity =
+            Math.min(
+                0.9,
+                0.5 +
+                destructionProgress * 0.3
+            );
+
+    }
+
+
+    /*
+       Медленное вращение
+    */
+
+    heartParticles.rotation.y =
+        Math.sin(time * 0.3) *
+        0.08;
+
+
+    sparkles.rotation.y =
+        time * 0.01;
+
+
+    renderer.render(
+        scene,
+        camera
+    );
+
+}
+
+
+animate();
+
+
+
+/* =========================================================
+   НАЗАД
+========================================================= */
+
+function goBack() {
+
+    document
+        .getElementById(
+            "page2"
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+    document
+        .getElementById(
+            "page1"
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    /*
+       Возвращаем сердце.
+    */
+
+    destroyed = false;
+
+    destructionProgress = 0;
+
+    particleMaterial.opacity =
+        0.95;
+
+
+    const positionAttribute =
+        particleGeometry
+            .attributes
+            .position;
+
+
+    for (
+        let i = 0;
+        i < particleCount;
+        i++
+    ) {
+
+        const index = i * 3;
+
+
+        positions[index] =
+            originalPositions[index];
+
+        positions[index + 1] =
+            originalPositions[index + 1];
+
+        positions[index + 2] =
+            originalPositions[index + 2];
+
+
+        velocities[index] = 0;
+        velocities[index + 1] = 0;
+        velocities[index + 2] = 0;
+
+    }
+
+
+    positionAttribute
+        .needsUpdate = true;
+
+
+    document
+        .getElementById(
+            "openButton"
+        )
+        .classList.remove(
+            "hide"
+        );
+
+}
+
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener(
