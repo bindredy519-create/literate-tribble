@@ -1307,4 +1307,68 @@ function goBack() {
             originalPositions[index + 1];
 
         positions[index + 2]
-        
+        =
+            originalPositions[index + 2];
+
+
+        velocities[index] = 0;
+        velocities[index + 1] = 0;
+        velocities[index + 2] = 0;
+
+    }
+
+
+    positionAttribute
+        .needsUpdate = true;
+
+
+    document
+        .getElementById(
+            "openButton"
+        )
+        .classList.remove(
+            "hide"
+        );
+
+}
+
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        camera.aspect =
+            window.innerWidth /
+            window.innerHeight;
+
+
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize(
+            window.innerWidth,
+            window.innerHeight
+        );
+
+    }
+);
+
+</script>
+
+<script>
+const password = prompt("введи пароль")
+
+if (password === "123456") {
+    document.body.style.display = "block"
+} else {
+    document.body.innerHTML = "неверный пароль"
+    document.body.style.display = "block"
+}
+</script></body>
+</html>
+```
